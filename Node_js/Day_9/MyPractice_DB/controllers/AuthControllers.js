@@ -6,17 +6,19 @@ export const CreateStudentDatas= async (req,res)=>{
 
 try{
 
-    const {StudentName,StudentId,StudentCourse,StudentMobileNumber,StuentEmail,StudentStatus}=req.body
+    const {StudentName,StudentId,StudentCourse,StudentMobileNo,StudentEmail,StudentStatus}=req.body
+    console.log(StudentMobileNo);
     
-    const CreateData=  await StudentModel.create({StudentName,StudentId,StudentCourse,StudentMobileNumber,StuentEmail,StudentStatus})
-
+    
+    const CreateData=  await StudentModel.create({StudentName,StudentId,StudentCourse,StudentMobileNo,StudentEmail,StudentStatus})
+    console.log(CreateData);
     res.status(200).json({msg:`Successfully Created StudentData ${CreateData}`});
     
     
 
 }catch(error){
 
-     res.status(400).json({msg:"Something Wrong"})
+     res.status(400).json({msg:"Something Wrong", error:error})
 
 
 }
